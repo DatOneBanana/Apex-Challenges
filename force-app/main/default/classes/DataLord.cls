@@ -1,34 +1,34 @@
 public with sharing class DataLord {
 
-    public static Integer NumAccounts() {
+    public static Integer numAccounts() {
         return [SELECT COUNT() FROM Account];
     }
 
-    public static Integer NumHot() {
+    public static Integer numHot() {
         return [SELECT COUNT() FROM Account WHERE Rating = 'Hot'];
     }
 
-    public static Integer NumComplex(){
+    public static Integer numComplex(){
         return [SELECT COUNT() FROM Account WHERE Name LIKE '%&%'];
     }
 
-    public static List<Account> BigFive() {
+    public static List<Account> bigFive() {
         return [SELECT Id, Name, AnnualRevenue FROM Account ORDER BY AnnualRevenue DESC LIMIT 5];
     }
 
-    public static Opportunity LastBigOpportunity() {
+    public static Opportunity lastBigOpportunity() {
         return [SELECT Id, Name, CloseDate, Amount FROM Opportunity WHERE Amount > 100000 ORDER BY CloseDate DESC LIMIT 1];
     }
 
-    public static List<Contact> MajorPlayers() {
+    public static List<Contact> majorPlayers() {
         return [SELECT Id, Name, Account.Name FROM Contact WHERE Account.Rating = 'Hot'];
     }
 
-    public static String MostPopularAccount() {
+    public static String mostPopularAccount() {
         return [SELECT Account.Name FROM Contact GROUP BY Account.Name ORDER BY COUNT(Id) DESC LIMIT 1][0].Account.Name;
     }
 
-    public static List<Opportunity> TopClosingLeadSources() {
+    public static List<Opportunity> topClosingLeadSources() {
         return [
             SELECT LeadSource, COUNT(Id) numClosed
             FROM Opportunity
