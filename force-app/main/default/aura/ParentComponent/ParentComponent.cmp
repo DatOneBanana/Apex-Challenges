@@ -1,0 +1,13 @@
+<aura:component >
+    <aura:attribute name="messages" type="List" default="[]" />
+
+    <c:ChildComponent onSendMessage="{!c.handleMessage}" aura:id="childComponent" />
+
+    <ul>
+        <aura:iteration items="{!v.messages}" var="message">
+            <li>{!message}</li>
+        </aura:iteration>
+    </ul>
+
+    <lightning:button label="Clear Input" onclick="{!c.clearChildInput}" />
+</aura:component>

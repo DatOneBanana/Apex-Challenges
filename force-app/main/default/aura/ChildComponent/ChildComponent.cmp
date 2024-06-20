@@ -1,0 +1,10 @@
+<aura:component >
+    <aura:attribute name="message" type="String" />
+    
+    <div>
+        <lightning:input type="text" label="Enter message" value="{!v.message}" />
+        <lightning:button label="Send Message" onclick="{!c.sendMessage}" />
+    </div>
+    
+    <aura:method name="clearInput" action="{!c.clearInput}" />
+</aura:component>
