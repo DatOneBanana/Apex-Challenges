@@ -1,0 +1,33 @@
+<apex:page standardController="Account" extensions="AccountLookupController">
+    <apex:form>
+        <apex:pageMessages />
+        
+        <h1>Account Lookup</h1>
+        
+        <apex:pageBlock title="Enter Account ID or Name">
+            <apex:pageBlockSection columns="1">
+                <apex:inputText value="{!Account.Name}" label="Account Name"/>
+                <apex:commandButton action="{!lookupAccount}" value="Lookup Account"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+        
+        <apex:outputPanel rendered="{!NOT(ISNULL(Account.Id))}">
+            <h2>Account Details</h2>
+            <apex:pageBlock title="Account Information">
+                <apex:pageBlockSection columns="1">
+                    <apex:outputField value="{!Account.Name}" label="Account Name"/>
+                    <apex:outputField value="{!Account.Phone}" label="Phone"/>
+                    <apex:outputField value="{!Account.Industry}" label="Industry"/>
+                </apex:pageBlockSection>
+            </apex:pageBlock>
+            
+            <h2>Related Contacts</h2>
+            <ul>
+                <apex:repeat value="{!relatedContacts}" var="contact">
+                    <li>{!contact.Name}</li>
+                </apex:repeat>
+            </ul>
+        </apex:outputPanel>
+        
+    </apex:form>
+</apex:page>

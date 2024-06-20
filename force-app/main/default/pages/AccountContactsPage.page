@@ -1,0 +1,10 @@
+<apex:page controller="AccountContactController">
+    <apex:pageBlock title="Accounts and Their Contacts">
+        <apex:pageBlockTable value="{!accounts}" var="acc">
+            <apex:column headerValue="Account Name" value="{!acc.Name}"/>
+            <apex:column headerValue="Contact Names">
+                <apex:outputText value="{!getContactNames(acc)}"/>
+            </apex:column>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>

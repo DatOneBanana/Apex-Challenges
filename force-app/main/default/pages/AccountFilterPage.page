@@ -1,0 +1,14 @@
+<apex:page controller="AccountFilterController">
+    <apex:form>
+        <apex:pageBlock title="Filter Accounts">
+            <apex:pageBlockSection>
+                <apex:inputText value="{!accountNameFilter}" label="Account Name"/>
+                <apex:commandButton value="Filter Accounts" action="{!filterAccounts}" rerender="filteredAccounts"/>
+            </apex:pageBlockSection>
+        </apex:pageBlock>
+    </apex:form>
+    
+    <apex:outputPanel id="filteredAccounts">
+        <c:AccountsContactsPage filteredAccounts="{!filteredAccounts}" rendered="{!showFilteredAccounts}"/>
+    </apex:outputPanel>
+</apex:page>
