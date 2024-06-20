@@ -1,0 +1,38 @@
+<apex:page controller="SingleAccountController" renderAs="pdf">
+    <apex:includeScript value="{!URLFOR($Resource.styles)}" />
+    <body>
+        <apex:form>
+            <apex:pageMessages />
+            <apex:outputPanel rendered="{!NOT(ISNULL(account))}">
+                <h1>Account Details</h1>
+                <div class="pageBlock">
+                    <div class="pageBlockSection">
+                        <span class="label">Account Name:</span>
+                        <span>{!account.Name}</span>
+                    </div>
+                    <div class="pageBlockSection">
+                        <span class="label">Phone:</span>
+                        <span>{!account.Phone}</span>
+                    </div>
+                    <div class="pageBlockSection">
+                        <span class="label">Industry:</span>
+                        <span>{!account.Industry}</span>
+                    </div>
+                    <div class="pageBlockSection">
+                        <span class="label">Website:</span>
+                        <span>{!account.Website}</span>
+                    </div>
+                </div>
+                
+                <h2>About Me</h2>
+                <p class="aboutMe">{!aboutMe}</p>
+
+                <apex:outputPanel id="greetingPanel" rendered="{!showGreeting}">
+                    <h2>Greeting</h2>
+                    <p>Hello, {!account.Name}!</p>
+                </apex:outputPanel>
+            </apex:outputPanel>
+
+        </apex:form>
+    </body>
+</apex:page>
